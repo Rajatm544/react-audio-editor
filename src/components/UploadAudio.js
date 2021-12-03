@@ -1,14 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { FileContext } from '../contexts/fileContext';
 
 const UploadAudio = () => {
 	const inputFile = useRef(null);
+	const { fileURL, setFileURL } = useContext(FileContext);
 	const [file, setFile] = useState(null);
 
 	useEffect(() => {
-		console.log(file);
-	}, [file]);
+		if (file) setFileURL(file);
+	}, [file, setFileURL]);
 
-	// handle image overlay div's click to upload new file
+	useEffect(() => {
+		console.log(fileURL);
+	}, [fileURL]);
+
 	const handleButtonClick = () => {
 		inputFile.current.click();
 	};
