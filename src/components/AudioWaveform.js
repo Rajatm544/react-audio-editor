@@ -13,10 +13,9 @@ const AudioWaveform = () => {
 	// crate an instance of the wavesurfer
 	const [wavesurferObj, setWavesurferObj] = useState();
 
-	// to keep track whether audio is currently playing or not
-	const [playing, setPlaying] = useState(true);
-	// to control volume level of the audio. 0-mute, 1-max
-	const [volume, setVolume] = useState(1);
+	const [playing, setPlaying] = useState(true); // to keep track whether audio is currently playing or not
+	const [volume, setVolume] = useState(1); // to control volume level of the audio. 0-mute, 1-max
+	const [zoom, setZoom] = useState(1); // to control the zoom level of the waveform
 
 	// create the waveform inside the correct component
 	useEffect(() => {
@@ -73,6 +72,11 @@ const AudioWaveform = () => {
 		if (wavesurferObj) wavesurferObj.setVolume(volume);
 	}, [volume, wavesurferObj]);
 
+	// set zoom level of the wavesurfer object, whenever the zoom variable in state is changed
+	useEffect(() => {
+		if (wavesurferObj) wavesurferObj.zoom(zoom);
+	}, [zoom, wavesurferObj]);
+
 	const handlePlayPause = (e) => {
 		wavesurferObj.playPause();
 		setPlaying(!playing);
@@ -87,6 +91,10 @@ const AudioWaveform = () => {
 
 	const handleVolumeSlider = (e) => {
 		setVolume(e.target.value);
+	};
+
+	const handleZoomSlider = (e) => {
+		setZoom(e.target.value);
 	};
 
 	return (
@@ -110,6 +118,18 @@ const AudioWaveform = () => {
 					onClick={handleReload}>
 					<i className='material-icons'>replay</i>
 				</button>
+				<div className='volume-slide-container'>
+					<i className='material-icons zoom-icon'>remove_circle</i>
+					<input
+						type='range'
+						min='1'
+						max='1000'
+						value={zoom}
+						onChange={handleZoomSlider}
+						class='slider zoom-slider'
+					/>
+					<i className='material-icons zoom-icon'>add_circle</i>
+				</div>
 				<div className='volume-slide-container'>
 					{volume > 0 ? (
 						<i className='material-icons'>volume_up</i>
