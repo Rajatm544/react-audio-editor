@@ -191,9 +191,9 @@ i.zoom-icon {
 }
 
 input:checked+.toggle:before {
-  -webkit-transform: translateX(200%);
-  -ms-transform: translateX(200%);
-  transform: translateX(200%);
+  -webkit-transform: translateX(180%);
+  -ms-transform: translateX(180%);
+  transform: translateX(180%);
 }
 
 .on {
