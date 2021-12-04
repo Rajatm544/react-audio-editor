@@ -1,7 +1,7 @@
 # Audio Editor
 
 -   An app to visualise audio files as waveforms, and to edit it in the browser!
--   The app is built using React.js and [wavesurfer.js](https://wavesurfer-js.org/)
+-   The app is built using React.js(CRA) and [wavesurfer.js](https://wavesurfer-js.org/)
 -   There are 2 routes in the app:
     -   The `/` route is used to upload the audio file
     -   The `/edit` route is used to edit the audio waveform
