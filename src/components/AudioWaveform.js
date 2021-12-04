@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
+import TimelinePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.min.js';
 import { FileContext } from '../contexts/fileContext';
 import wavesurfer from 'wavesurfer.js';
 
 const AudioWaveform = () => {
 	const wavesurferRef = useRef(null);
+	const timelineRef = useRef(null);
 
 	// fetch file url from the context
 	const { fileURL, setFileURL } = useContext(FileContext);
@@ -24,6 +26,11 @@ const AudioWaveform = () => {
 					waveColor: '#211027',
 					progressColor: '#69207F',
 					responsive: true,
+					plugins: [
+						TimelinePlugin.create({
+							container: '#wave-timeline',
+						}),
+					],
 				})
 			);
 		}
@@ -49,6 +56,7 @@ const AudioWaveform = () => {
 	return (
 		<section className='waveform-container'>
 			<div ref={wavesurferRef} id='waveform' />
+			<div ref={timelineRef} id='wave-timeline' />
 		</section>
 	);
 };
