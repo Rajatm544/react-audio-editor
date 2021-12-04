@@ -1,10 +1,10 @@
 import React from 'react';
 import UploadAudio from '../components/UploadAudio';
 
-const HomePage = () => {
+const HomePage = ({ history }) => {
 	return (
 		<div>
-			<UploadAudio />
+			<UploadAudio history={history} />
 		</div>
 	);
 };
