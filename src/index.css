@@ -9,10 +9,225 @@ body {
   width: 100%;
 }
 
+/* style for the upload audio component */
 .upload-audio {
-  margin-top: 15vh;
+  width: 100%;
+  margin-top: 5vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
+}
+
+/* the container where wavesurfer adds the audio waveform */
+.waveform-container {
+  margin: 0 auto;
+  max-width: 80vw;
+}
+
+/* style for the navbar */
+nav {
+  display: flex;
+  align-items: center;
+  height: 3.5em;
+  padding: 0 2em;
+  background-color: #1D0B22;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+}
+
+nav>.brand {
+  display: flex;
+  color: white;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* all icons */
+i.material-icons {
+  font-size: 1.5em;
+  color: #1D0B22;
+}
+
+h1 {
+  color: #1D0B22
+}
+
+/* style for the upload button */
+button.upload-btn {
+  width: 10em;
+  font-size: 1em;
+  padding: 0.5em;
+  background: #5B266B;
+  border-radius: 999px;
+  color: white;
+  border-color: #5B266B;
+  cursor: pointer;
+}
+
+button.upload-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* style for the trim button */
+.trim {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #1D0B22;
+  color: white;
+  width: 5em;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 0.25em;
+  border: 1px solid rebeccapurple;
+}
+
+/* all the button controls */
+div.all-controls {
+  margin: 2em auto;
+  max-width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button.controls {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+/* style for both sliders */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: rgba(213, 184, 255, 0.7);
+  border: 1px solid #1D0B22;
+  border-radius: 999px;
+  margin: 0;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  filter: brightness(1.05);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #1D0B22;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #1D0B22;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.volume-slide-container {
+  display: flex;
+  align-items: center;
+}
+
+/* smaller icon for zoom slider */
+i.zoom-icon {
+  font-size: 0.8em;
+}
+
+/* toggle switch style*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 1.2em;
+}
+
+.switch input {
+  display: none;
+}
+
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1D0B22;
+  -webkit-transition: .2s;
+  transition: .2s;
+  padding: 0;
+  border-radius: 999px;
+}
+
+.toggle:before {
+  position: absolute;
+  content: "";
+  top: -10%;
+  height: 1.30em;
+  width: 1.30em;
+  background-color: #923CAC;
+  border: 0.05em solid rebeccapurple;
+  -webkit-transition: .2s;
+  transition: .2s;
+  border-radius: 50%;
+}
+
+input:checked+.toggle:before {
+  -webkit-transform: translateX(200%);
+  -ms-transform: translateX(200%);
+  transform: translateX(200%);
+}
+
+.on {
+  display: none;
+  color: white;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 45%;
+  left: 35%;
+  font-size: 0.5em;
+}
+
+.off {
+  color: white;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 45%;
+  left: 65%;
+  font-size: 0.5em;
+
+}
+
+input:checked+.toggle .on {
+  display: block;
+}
+
+input:checked+.toggle .off {
+  display: none;
+}
+
+/* footer style */
+footer {
+  font-family: inherit;
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
 }
