@@ -13,6 +13,9 @@ const AudioWaveform = () => {
 	// crate an instance of the wavesurfer
 	const [wavesurferObj, setWavesurferObj] = useState();
 
+	// to keep track whether audio is currently playing or not
+	const [playing, setPlaying] = useState(true);
+
 	// create the waveform inside the correct component
 	useEffect(() => {
 		if (wavesurferRef.current && !wavesurferObj) {
@@ -43,20 +46,47 @@ const AudioWaveform = () => {
 		}
 	}, [fileURL, wavesurferObj]);
 
-	// once the waveform is ready, play the audio
 	useEffect(() => {
 		if (wavesurferObj) {
+			// once the waveform is ready, play the audio
 			wavesurferObj.on('ready', () => {
 				wavesurferObj.play();
 				wavesurferObj.enableDragSelection({});
 			});
+
+			// once audio starts playing, set the state variable to true
+			wavesurferObj.on('play', () => {
+				setPlaying(true);
+			});
+
+			// once audio starts playing, set the state variable to false
+			wavesurferObj.on('finish', () => {
+				setPlaying(false);
+			});
 		}
 	}, [wavesurferObj]);
+
+	const handlePlayPause = (e) => {
+		wavesurferObj.playPause();
+		setPlaying(!playing);
+	};
 
 	return (
 		<section className='waveform-container'>
 			<div ref={wavesurferRef} id='waveform' />
 			<div ref={timelineRef} id='wave-timeline' />
+			<div className='all-controls'>
+				<button
+					title='play/pause'
+					className='controls'
+					onClick={handlePlayPause}>
+					{playing ? (
+						<i className='material-icons'>pause</i>
+					) : (
+						<i className='material-icons'>play_arrow</i>
+					)}
+				</button>
+			</div>
 		</section>
 	);
 };
