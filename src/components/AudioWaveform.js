@@ -15,6 +15,8 @@ const AudioWaveform = () => {
 
 	// to keep track whether audio is currently playing or not
 	const [playing, setPlaying] = useState(true);
+	// to control volume level of the audio. 0-mute, 1-max
+	const [volume, setVolume] = useState(1);
 
 	// create the waveform inside the correct component
 	useEffect(() => {
@@ -51,7 +53,7 @@ const AudioWaveform = () => {
 			// once the waveform is ready, play the audio
 			wavesurferObj.on('ready', () => {
 				wavesurferObj.play();
-				wavesurferObj.enableDragSelection({});
+				wavesurferObj.enableDragSelection({}); // to select the region to be trimmed
 			});
 
 			// once audio starts playing, set the state variable to true
@@ -66,6 +68,11 @@ const AudioWaveform = () => {
 		}
 	}, [wavesurferObj]);
 
+	// set volume of the wavesurfer object, whenever volume variable in state is changed
+	useEffect(() => {
+		if (wavesurferObj) wavesurferObj.setVolume(volume);
+	}, [volume, wavesurferObj]);
+
 	const handlePlayPause = (e) => {
 		wavesurferObj.playPause();
 		setPlaying(!playing);
@@ -76,6 +83,10 @@ const AudioWaveform = () => {
 		wavesurferObj.stop();
 		wavesurferObj.play();
 		setPlaying(true); // to toggle the play/pause button icon
+	};
+
+	const handleVolumeSlider = (e) => {
+		setVolume(e.target.value);
 	};
 
 	return (
@@ -99,6 +110,22 @@ const AudioWaveform = () => {
 					onClick={handleReload}>
 					<i className='material-icons'>replay</i>
 				</button>
+				<div className='volume-slide-container'>
+					{volume > 0 ? (
+						<i className='material-icons'>volume_up</i>
+					) : (
+						<i className='material-icons'>volume_off</i>
+					)}
+					<input
+						type='range'
+						min='0'
+						max='1'
+						step='0.05'
+						value={volume}
+						onChange={handleVolumeSlider}
+						className='slider volume-slider'
+					/>
+				</div>
 			</div>
 		</section>
 	);
