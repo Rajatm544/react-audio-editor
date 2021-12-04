@@ -71,6 +71,13 @@ const AudioWaveform = () => {
 		setPlaying(!playing);
 	};
 
+	const handleReload = (e) => {
+		// stop will return the audio to 0s, then play it again
+		wavesurferObj.stop();
+		wavesurferObj.play();
+		setPlaying(true); // to toggle the play/pause button icon
+	};
+
 	return (
 		<section className='waveform-container'>
 			<div ref={wavesurferRef} id='waveform' />
@@ -85,6 +92,12 @@ const AudioWaveform = () => {
 					) : (
 						<i className='material-icons'>play_arrow</i>
 					)}
+				</button>
+				<button
+					title='reload'
+					className='controls'
+					onClick={handleReload}>
+					<i className='material-icons'>replay</i>
 				</button>
 			</div>
 		</section>
