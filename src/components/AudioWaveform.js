@@ -3,6 +3,7 @@ import TimelinePlugin from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.min.js
 import RegionsPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min.js';
 import { FileContext } from '../contexts/fileContext';
 import wavesurfer from 'wavesurfer.js';
+import ToggleButton from './ToggleButton';
 
 const AudioWaveform = () => {
 	const wavesurferRef = useRef(null);
@@ -200,6 +201,7 @@ const AudioWaveform = () => {
 			<div ref={wavesurferRef} id='waveform' />
 			<div ref={timelineRef} id='wave-timeline' />
 			<div className='all-controls'>
+				<ToggleButton />
 				<button
 					title='play/pause'
 					className='controls'
