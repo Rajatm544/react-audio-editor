@@ -1,31 +1,38 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { FileContext } from '../contexts/fileContext';
 
-const UploadAudio = () => {
+const UploadAudio = ({ history }) => {
 	const inputFile = useRef(null);
 	const { fileURL, setFileURL } = useContext(FileContext);
 	const [file, setFile] = useState(null);
 
 	useEffect(() => {
-		if (file) setFileURL(file);
-	}, [file, setFileURL]);
-
-	useEffect(() => {
-		console.log(fileURL);
-	}, [fileURL]);
+		if (file) {
+			setFileURL(file);
+			history.push('/edit');
+		}
+	}, [file, setFileURL, history]);
 
 	const handleButtonClick = () => {
 		inputFile.current.click();
 	};
 
 	const handleFileUpload = (e) => {
+		// console.log(file);
 		setFile(URL.createObjectURL(e.target.files[0]));
 	};
 
 	return (
 		<div className='upload-audio'>
-			<h1>Upload your audio file here </h1>
-			<button onClick={handleButtonClick}>Upload</button>
+			<i
+				style={{ fontSize: '5em', color: '#531A65' }}
+				className='material-icons'>
+				library_music
+			</i>
+			<h1>Upload your audio file here</h1>
+			<button className='upload-btn' onClick={handleButtonClick}>
+				Upload
+			</button>
 			<input
 				type='file'
 				id='file'
