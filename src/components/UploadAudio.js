@@ -25,8 +25,8 @@ const UploadAudio = ({ history }) => {
 	return (
 		<div className='upload-audio'>
 			<i
-				style={{ fontSize: '5em', color: '#531A65' }}
-				className='material-icons'>
+				style={{ color: '#531A65' }}
+				className='material-icons audio-icon'>
 				library_music
 			</i>
 			<h1>Upload your audio file here</h1>
