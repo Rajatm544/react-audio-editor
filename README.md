@@ -14,6 +14,13 @@
     -   toggle switch
 -   The app is deployed to [Netlify](https://www.netlify.com/) using continuous integration from the Github repo
 
+## Steps to get started
+
+-   Fork and clone this repo using `git clone https://github.com/Rajatm544/react-audio-editor.git`
+-   `npm install` all dependencies
+-   `npm start` to run the react app locally
+-   Refer the wavesurfer.js docs to add new features!
+
 ## Deployment steps
 
 -   Push all the code to this repo
