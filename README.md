@@ -1,4 +1,13 @@
-# Audio Editor
+<h1 align="center">
+<img src="https://user-images.githubusercontent.com/42696800/144735496-440c6f9b-70f1-400d-9284-3e3490bc2526.png" alt="logo" width="30" height="30" />
+Audio Editor
+<p align='center'>
+<img src='https://img.shields.io/netlify/69141fdb-6979-491a-af61-1852fe23b2b1?style=flat-square' alt='build'>
+<img src='https://img.shields.io/github/license/Rajatm544/react-audio-editor?style=flat-square' alt='license'>
+<img src='https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square' alt='maintained'>
+</p>
+	
+</h1>
 
 -   An app to visualise audio files as waveforms, and to edit it in the browser!
 -   The app is built using React.js(CRA) and [wavesurfer.js](https://wavesurfer-js.org/)
