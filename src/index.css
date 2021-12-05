@@ -19,6 +19,10 @@ body {
   justify-content: space-between;
 }
 
+.upload-audio i.audio-icon {
+  font-size: 5em;
+}
+
 /* the container where wavesurfer adds the audio waveform */
 .waveform-container {
   margin: 0 auto;
@@ -94,7 +98,15 @@ div.all-controls {
   max-width: 60vw;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.all-controls .right-container,
+.all-controls .left-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
 }
 
 button.controls {
@@ -230,4 +242,45 @@ footer {
   position: fixed;
   bottom: 2%;
   right: 2%;
+}
+
+@media screen and (max-width: 430px) {
+  nav {
+    font-size: 1em;
+  }
+
+  .upload-audio i.audio-icon {
+    font-size: 4em;
+  }
+
+  /* all icons */
+  i.material-icons {
+    font-size: 1.5em;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  div.all-controls {
+    max-width: 90vw;
+    flex-flow: column nowrap;
+  }
+
+  .waveform-container {
+    max-width: 90vw;
+  }
+
+  .all-controls .right-container,
+  .all-controls .left-container {
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  /* smaller icon for zoom slider */
+  i.zoom-icon {
+    font-size: 1em;
+  }
+
 }
