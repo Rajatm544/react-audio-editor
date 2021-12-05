@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 	return (
@@ -8,7 +7,7 @@ const Navbar = () => {
 				<i style={{ color: 'white' }} className='material-icons'>
 					audiotrack
 				</i>
-				<Link to='/'>Audio Editor</Link>
+				<a href='/'>Audio Editor</a>
 			</div>
 		</nav>
 	);
