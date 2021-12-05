@@ -201,61 +201,67 @@ const AudioWaveform = () => {
 			<div ref={wavesurferRef} id='waveform' />
 			<div ref={timelineRef} id='wave-timeline' />
 			<div className='all-controls'>
-				<ToggleButton />
-				<button
-					title='play/pause'
-					className='controls'
-					onClick={handlePlayPause}>
-					{playing ? (
-						<i className='material-icons'>pause</i>
-					) : (
-						<i className='material-icons'>play_arrow</i>
-					)}
-				</button>
-				<button
-					title='reload'
-					className='controls'
-					onClick={handleReload}>
-					<i className='material-icons'>replay</i>
-				</button>
-				<button className='trim' onClick={handleTrim}>
-					<i
-						style={{
-							fontSize: '1.2em',
-							color: 'white',
-						}}
-						className='material-icons'>
-						content_cut
-					</i>
-					Trim
-				</button>
-				<div className='volume-slide-container'>
-					<i className='material-icons zoom-icon'>remove_circle</i>
-					<input
-						type='range'
-						min='1'
-						max='1000'
-						value={zoom}
-						onChange={handleZoomSlider}
-						class='slider zoom-slider'
-					/>
-					<i className='material-icons zoom-icon'>add_circle</i>
+				<div className='left-container'>
+					<ToggleButton />
+					<button
+						title='play/pause'
+						className='controls'
+						onClick={handlePlayPause}>
+						{playing ? (
+							<i className='material-icons'>pause</i>
+						) : (
+							<i className='material-icons'>play_arrow</i>
+						)}
+					</button>
+					<button
+						title='reload'
+						className='controls'
+						onClick={handleReload}>
+						<i className='material-icons'>replay</i>
+					</button>
+					<button className='trim' onClick={handleTrim}>
+						<i
+							style={{
+								fontSize: '1.2em',
+								color: 'white',
+							}}
+							className='material-icons'>
+							content_cut
+						</i>
+						Trim
+					</button>
 				</div>
-				<div className='volume-slide-container'>
-					{volume > 0 ? (
-						<i className='material-icons'>volume_up</i>
-					) : (
-						<i className='material-icons'>volume_off</i>
-					)}
-					<input
-						type='range'
-						min='0'
-						max='1'
-						step='0.05'
-						value={volume}
-						onChange={handleVolumeSlider}
-						className='slider volume-slider'
-					/>
+				<div className='right-container'>
+					<div className='volume-slide-container'>
+						<i className='material-icons zoom-icon'>
+							remove_circle
+						</i>
+						<input
+							type='range'
+							min='1'
+							max='1000'
+							value={zoom}
+							onChange={handleZoomSlider}
+							class='slider zoom-slider'
+						/>
+						<i className='material-icons zoom-icon'>add_circle</i>
+					</div>
+					<div className='volume-slide-container'>
+						{volume > 0 ? (
+							<i className='material-icons'>volume_up</i>
+						) : (
+							<i className='material-icons'>volume_off</i>
+						)}
+						<input
+							type='range'
+							min='0'
+							max='1'
+							step='0.05'
+							value={volume}
+							onChange={handleVolumeSlider}
+							className='slider volume-slider'
+						/>
+					</div>
 				</div>
 			</div>
 		</section>
